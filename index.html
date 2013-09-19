@@ -141,6 +141,12 @@
 
         <section>
           <section>
+            <img src="CleanArchitecture.jpg"/>
+            <br/>
+            <a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">by Uncle Bob</a>
+          </section>
+
+          <section>
           <blockquote>
             <p>
               Object is recursion of entire possibilities of computer,  not something more primitive, like procedure...
@@ -163,15 +169,15 @@
 
 
         <section>
-          <h2>Incapsulation?</h2>
-          <h2>Dependency Inversion Principle</h2>
+          <h2>Incapsulation</h2>
+          <h2>Dependency Inversion</h2>
           <p>Абстракции не должны зависеть от деталей. Детали должны зависеть от абстракций.</p>
           <p>Каков <span class="gold">концептуальный интерфейс</span> системы как объекта?</p>
         </section>
 
         <section>
           <h2>Absolute Behaviour Driven</h2>
-          <p>Важнее то как система себя <span class="gold">ведет</span>, нежели то как она <span class="gold">реализованна</span></p>
+          <p>Важнее то как система себя <span class="gold">ведет</span>,<br/> нежели то как она <span class="gold">устроена</span></p>
         </section>
 
         <section>
@@ -180,10 +186,15 @@
           <p>Взаимодействия с системой = вызов методов</p>
         </section>
 
+
         <section>
           <h3>TDD mantra:</h3>
           <h3><span style="color:#faa;">Red</span>, <span style="color:#afa;">Green</span> and <span style="color: #aaf;">Refactor</span></h3>
           <p>Как мы реализуем хорошие объекты?</p>
+        </section>
+
+        <section>
+          <img src="deming.png"/>
         </section>
 
         <section>
@@ -201,18 +212,39 @@
                 s.confirm!(confirmation_key)
 
                 session_key = s.sign_in!(email, password)
-                s.session_active?(session_key)
+                s.session_active?(session_key).should be_true
 
                 s.sign_out!(session_key)
               end
              </code>
            </pre>
         </section>
+       <section>
+         <p>Прототипирование</p>
+         <pre>
+           <code>
+            class IdentificationSystem
+              def sign_up(email, password)
+                emit :sign_up, users[email] = {
+                  email: email,
+                  password: password,
+                  confirmation_key: rand(100)
+                  status: :not_confirmed
+                }
+              end
+
+              def users
+                @users ||= {}
+              end
+            end
+           </code>
+         </pre>
+       </section>
 
         <section>
           <p> Мы свели интерфейс нашей системы к ruby объекту</p>
           <p> Мы можем использовать его для разных каналов взаимодействия - не боясь за целостность</p>
-          <p> и покрыть его контрактом</p>
+          <p> и покрыть его специфакацией/контрактом</p>
         </section>
 
         <section>
