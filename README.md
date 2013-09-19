@@ -2,6 +2,6 @@
 
 Slides for rubyspb.ru conference
 
-[http://niquola.github.io/clean-arhitecture-slides/]
+[http://niquola.github.io/clean-architecture-slides/]
 
 
