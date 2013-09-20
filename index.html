@@ -71,8 +71,8 @@
 
         <section>
           <section>
-            <h3>Взаимодействие с пользователем <br/>
-              в основном через контоллер</h3>
+            <h3>Взаимодействия с пользователем <br/>
+              через контоллер</h3>
           </section>
 
           <section>
@@ -137,7 +137,7 @@
         <section>
            <pre>
              <code>
-              IdentificationSystem.new(configuration).tap do |s|
+              system.identification_use_case.tap do |s|
                 confirmation_key = nil
 
                 s.listen :sign_up do |ev|
@@ -166,7 +166,7 @@
         <section>
            <pre>
              <code>
-              IdentificationSystem.new(configuration).tap do |s|
+              system.identification_use_case.tap do |s|
                 confirmation_key = nil
 
                 s.listen :sign_up do |ev|
